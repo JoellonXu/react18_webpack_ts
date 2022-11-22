@@ -10,7 +10,8 @@ const routes: RouteProps[] = [
     path: '/',
     element: <Outlet />,
     children: [
-      { index: true, element: <Navigate replace to='/home' /> },
+        
+      { path:'/home', element: <Navigate replace to='/home' /> },
       {
         path: 'login',
         element: lazyLoad(lazy(() => import('@/views/login')))
