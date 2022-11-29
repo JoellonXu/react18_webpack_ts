@@ -1,10 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './rootReducer'
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import reducer from "./reducer";
 
-const store = configureStore({
-  reducer: rootReducer
-})
+const persistConfig = {
+  key: "root", // 储存的标识名
+  storage, // 储存方式
+  whitelist: ["login"], //白名单 模块参与缓存
+};
+const persistedReducer = persistReducer(persistConfig, reducer);
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export type AppDispatch = typeof store.dispatch
-export const dispatch = store.dispatch
-export default store
+const store = createStore(
+  persistedReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
+const persistor = persistStore(store);
+
+export { store, persistor };
