@@ -35,7 +35,7 @@ const Home = memo(() => {
     // getBarList().then((res: any) => {
     //   renderBarView(_.groupBy(res, (item) => item.category.title));
     //   setbarList(res);
-    // });
+    // });111
     return () => {
       window.onresize = null;
     };
