@@ -14,10 +14,10 @@ const lazyLoad = (moduleName: string) => {
 //   const token = localStorage.getItem("token");
 //   return token ? lazyLoad("sand-box") : <Navigate to="/login" />;
 // };
-const Appraisal = ({ children }: any) => {
-  const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/login" />;
-};
+// const Appraisal = ({ children }: any) => {
+//   const token = localStorage.getItem("token");
+//   return token ? children : <Navigate to="/login" />;
+// };
 
 interface Router {
   name?: string;
@@ -32,26 +32,8 @@ const routes: Array<Router> = [
     element: lazyLoad("login"),
   },
   {
-    path: "/newsViews",
-    element: lazyLoad("news"),
-  },
-  {
-    path: "/newsViews/detailsNews/:id",
-    element: lazyLoad("news/detail"),
-  },
-  {
-    path: "/",
-    element: <Appraisal>{lazyLoad("sand-box")}</Appraisal>,
-    children: [
-      {
-        path: "",
-        element: <Navigate to="home" />,
-      },
-      {
-        path: "*",
-        element: lazyLoad("sand-box/nopermission"),
-      },
-    ],
+    path: "/home",
+    element: lazyLoad("home"),
   },
   {
     path: "*",

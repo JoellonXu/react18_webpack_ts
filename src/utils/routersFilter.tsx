@@ -18,8 +18,8 @@ const defaulyRoutes: any = [
     element: lazyLoad("login"),
   },
   {
-    path: "/newsViews",
-    element: lazyLoad("news"),
+    path: "/home",
+    element: lazyLoad("home"),
   },
   {
     path: "/newsViews/detailsNews/:id",
