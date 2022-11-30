@@ -28,6 +28,10 @@ interface Router {
 
 const routes: Array<Router> = [
   {
+     path:"/",
+     element: lazyLoad("login")
+  },
+  {
     path: "/login",
     element: lazyLoad("login"),
   },
